@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatelessWidget {
+  double width = 0.0;
+  double height = 0.0;
+
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     // TODO: implement build
     return Container(
       color: Colors.white,
@@ -31,14 +36,21 @@ class DashboardPage extends StatelessWidget {
                   end: Alignment.centerRight,
                   colors: [Colors.orangeAccent, Colors.amber],
                 ),
-              )
-          ),
-          Expanded(
-              child: Container(
-                color: Colors.amber,
-                child: _getPageView(),
+              )),
+          // Expanded(
+          //   child:
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [Colors.amber, Colors.orangeAccent],
               ),
-              flex: 5),
+            ),
+            height: height * 0.35,
+            child: _getPageView(),
+          ),
+          //  flex: 5),
           Container(
             padding: EdgeInsets.all(10),
             color: Color(0xFFE5E4E2),
@@ -64,7 +76,6 @@ class DashboardPage extends StatelessWidget {
                 padding: EdgeInsets.all(10.0),
                 color: Color(0xFFF0F8FF),
                 child: Column(
-
                   children: <Widget>[
                     Expanded(
                         flex: 5,
@@ -87,8 +98,7 @@ class DashboardPage extends StatelessWidget {
                               flex: 2,
                             )
                           ],
-                        )
-                    ),
+                        )),
                     Expanded(
                         flex: 5,
                         child: Row(
@@ -110,12 +120,11 @@ class DashboardPage extends StatelessWidget {
                               flex: 2,
                             )
                           ],
-                        )
-                    )
+                        ))
                   ],
                 ),
               ),
-              flex: 5),
+              flex: 6),
         ],
       ),
     );
@@ -177,25 +186,27 @@ class DashboardPage extends StatelessWidget {
   Widget _getPagerViewChild(String bannerImage) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          Container(
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.only(left: 5.0, right: 5.0, top: 10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(bannerImage,
-                      fit: BoxFit.fitHeight, scale: 0.8),
-                ),
+          Expanded(
+            child: Container(
+              padding:
+                  EdgeInsets.only(left: 5.0, right: 5.0, top: 10, bottom: 5.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(bannerImage, fit: BoxFit.fill),
               ),
             ),
           ),
-          Expanded(
-              child: Padding(
-            padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+         Padding(
+            padding: EdgeInsets.only(
+                left: 10.0, right: 10.0, top: 5.0, bottom: 10.0),
             child: SizedBox(
                 width: double.infinity,
-                child: Text("Restaurant Brands secured the New Zealand franchise for Starbucks Coffee in 1998. ",
+                height: 30,
+                child: Text(
+                    "Restaurant Brands secured the New Zealand franchise for Starbucks Coffee in 1998. ",
                     textDirection: TextDirection.ltr,
                     textAlign: TextAlign.start,
                     style: TextStyle(
@@ -203,7 +214,7 @@ class DashboardPage extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                     ))),
-          ))
+          )
         ],
       ),
     );
