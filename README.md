@@ -15,3 +15,8 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 Sample Application interface
+
+
+<div align="center">
+    <img src="/screenshots/Screenshot.jpg" width="400px"</img> 
+</div>
